@@ -25,6 +25,7 @@ public class NoteController {
     // Create a new Note
     @PostMapping("/notes")
     public Note createNote(@Valid @RequestBody Note note) {
+        System.out.println("");
         return noteRepository.save(note);
     }
     // Get a Single Note
@@ -42,6 +43,7 @@ public class NoteController {
                .orElseThrow(() -> new ResourceNotFoundException("Note", "id", noteId));
 
         note.setTitle(noteDetails.getTitle());
+
         note.setContent(noteDetails.getContent());
 
         Note updatedNote = noteRepository.save(note);
